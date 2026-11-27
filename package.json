@@ -1,0 +1,317 @@
+{
+  "name": "zovo-pyproject-poetry-viewer",
+  "displayName": "PyProject & Ruff Config View",
+  "description": "Inspect pyproject.toml, ruff.toml and .ruff.toml offline in VS Code: project, Poetry and uv dependencies, optional groups, Ruff, Mypy and Pytest settings, build-system and script entrypoints, and static findings without running Python, pip or uv.",
+  "version": "0.1.0",
+  "publisher": "zovo",
+  "license": "MIT",
+  "icon": "icon.png",
+  "galleryBanner": {
+    "color": "#0F172A",
+    "theme": "dark"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/theluckystrike/pyproject-poetry-viewer-vscode"
+  },
+  "bugs": {
+    "url": "https://github.com/theluckystrike/pyproject-poetry-viewer-vscode/issues"
+  },
+  "homepage": "https://github.com/theluckystrike/pyproject-poetry-viewer-vscode#readme",
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [
+    "Other",
+    "Visualization"
+  ],
+  "keywords": [
+    "pyproject.toml",
+    "poetry",
+    "uv",
+    "ruff",
+    "mypy",
+    "pytest",
+    "python",
+    "inspector"
+  ],
+  "main": "./src/extension.js",
+  "activationEvents": [
+    "onUri",
+    "onCustomEditor:zovo-pyprojview.viewer"
+  ],
+  "capabilities": {
+    "untrustedWorkspaces": {
+      "supported": true
+    },
+    "virtualWorkspaces": true
+  },
+  "contributes": {
+    "customEditors": [
+      {
+        "viewType": "zovo-pyprojview.viewer",
+        "displayName": "PyProject & Ruff Config View",
+        "selector": [
+          {
+            "filenamePattern": "pyproject.toml"
+          },
+          {
+            "filenamePattern": "ruff.toml"
+          },
+          {
+            "filenamePattern": ".ruff.toml"
+          }
+        ],
+        "priority": "default"
+      }
+    ],
+    "commands": [
+      {
+        "command": "zovoPyprojview.openWith",
+        "title": "Open in PyProject & Ruff Config View",
+        "category": "PyProject & Ruff Config View",
+        "icon": "$(package)"
+      },
+      {
+        "command": "zovoPyprojview.openSample",
+        "title": "Open the Sample pyproject.toml File",
+        "category": "PyProject & Ruff Config View"
+      },
+      {
+        "command": "zovoPyprojview.openWalkthrough",
+        "title": "Get Started",
+        "category": "PyProject & Ruff Config View"
+      },
+      {
+        "command": "zovoPyprojview.moreViewers",
+        "title": "More free tools by Zovo",
+        "category": "PyProject & Ruff Config View"
+      },
+      {
+        "command": "zovoPyprojview.supportDeveloper",
+        "title": "Support the developer",
+        "category": "PyProject & Ruff Config View"
+      },
+      {
+        "command": "zovoPyprojview.auditPyproject",
+        "title": "Audit pyproject and Ruff config (Pro, 1 free try)",
+        "category": "PyProject & Ruff Config View"
+      },
+      {
+        "command": "zovoPyprojview.diffPyprojects",
+        "title": "Compare two pyproject files (Pro, 1 free try)",
+        "category": "PyProject & Ruff Config View"
+      },
+      {
+        "command": "zovoPyprojview.exportDepMatrix",
+        "title": "Export dependency matrix (Pro, 1 free try)",
+        "category": "PyProject & Ruff Config View"
+      },
+      {
+        "command": "zovoPyprojview.zovoPro.auditPyproject",
+        "title": "Zovo Pro: Audit pyproject and Ruff config"
+      },
+      {
+        "command": "zovoPyprojview.zovoPro.diffPyprojects",
+        "title": "Zovo Pro: Compare two pyproject files"
+      },
+      {
+        "command": "zovoPyprojview.zovoPro.exportDepMatrix",
+        "title": "Zovo Pro: Export dependency matrix"
+      },
+      {
+        "command": "zovoPyprojview.zovoTitle.auditPyproject",
+        "title": "Zovo Pro: Audit pyproject and Ruff config"
+      },
+      {
+        "command": "zovoPyprojview.zovoTitle.diffPyprojects",
+        "title": "Zovo Pro: Compare two pyproject files"
+      },
+      {
+        "command": "zovoPyprojview.zovoTitle.exportDepMatrix",
+        "title": "Zovo Pro: Export dependency matrix"
+      },
+      {
+        "command": "zovoPyprojview.getPro",
+        "title": "Get Zovo Pro (USD 19 once, all Zovo extensions)",
+        "category": "Zovo Pro"
+      },
+      {
+        "command": "zovoPyprojview.payWithPayPal",
+        "title": "Pay for Zovo Pro with PayPal (USD 19, team of 5 USD 59)",
+        "category": "Zovo Pro"
+      },
+      {
+        "command": "zovoPyprojview.unlockWithSponsors",
+        "title": "I already paid: unlock with GitHub Sponsors",
+        "category": "Zovo Pro"
+      },
+      {
+        "command": "zovoPyprojview.enterLicenseKey",
+        "title": "Enter Zovo Pro license key",
+        "category": "Zovo Pro"
+      },
+      {
+        "command": "zovoPyprojview.removeLicense",
+        "title": "Remove Zovo Pro from this editor",
+        "category": "Zovo Pro"
+      },
+      {
+        "command": "zovoPyprojview.payByCard",
+        "title": "Pay for Zovo Pro by card (USD 19)",
+        "category": "Zovo Pro"
+      },
+      {
+        "command": "zovoPyprojview.enterKey",
+        "title": "Enter a key",
+        "category": "Zovo Pro"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "zovoPyprojview.zovoTitle.auditPyproject",
+          "when": "activeCustomEditorId == 'zovo-pyprojview.viewer' && config.zovoPyprojview.showProTools",
+          "group": "zovoPro@1"
+        },
+        {
+          "command": "zovoPyprojview.zovoTitle.diffPyprojects",
+          "when": "activeCustomEditorId == 'zovo-pyprojview.viewer' && config.zovoPyprojview.showProTools",
+          "group": "zovoPro@2"
+        },
+        {
+          "command": "zovoPyprojview.zovoTitle.exportDepMatrix",
+          "when": "activeCustomEditorId == 'zovo-pyprojview.viewer' && config.zovoPyprojview.showProTools",
+          "group": "zovoPro@3"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "zovoPyprojview.openWith",
+          "when": "resourceFilename =~ /^(pyproject\\.toml|\\.?ruff\\.toml)$/i && !explorerResourceIsFolder",
+          "group": "navigation@9"
+        },
+        {
+          "command": "zovoPyprojview.zovoPro.auditPyproject",
+          "when": "resourceFilename =~ /^(pyproject\\.toml|\\.?ruff\\.toml)$/i && !explorerResourceIsFolder && config.zovoPyprojview.showProTools",
+          "group": "zovoPro@1"
+        },
+        {
+          "command": "zovoPyprojview.zovoPro.diffPyprojects",
+          "when": "resourceFilename =~ /^(pyproject\\.toml|\\.?ruff\\.toml)$/i && !explorerResourceIsFolder && config.zovoPyprojview.showProTools",
+          "group": "zovoPro@2"
+        },
+        {
+          "command": "zovoPyprojview.zovoPro.exportDepMatrix",
+          "when": "resourceFilename =~ /^(pyproject\\.toml|\\.?ruff\\.toml)$/i && !explorerResourceIsFolder && config.zovoPyprojview.showProTools",
+          "group": "zovoPro@3"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "zovoPyprojview.auditPyproject",
+          "when": "config.zovoPyprojview.showProTools"
+        },
+        {
+          "command": "zovoPyprojview.diffPyprojects",
+          "when": "config.zovoPyprojview.showProTools"
+        },
+        {
+          "command": "zovoPyprojview.exportDepMatrix",
+          "when": "config.zovoPyprojview.showProTools"
+        },
+        {
+          "command": "zovoPyprojview.zovoPro.auditPyproject",
+          "when": "false"
+        },
+        {
+          "command": "zovoPyprojview.zovoPro.diffPyprojects",
+          "when": "false"
+        },
+        {
+          "command": "zovoPyprojview.zovoPro.exportDepMatrix",
+          "when": "false"
+        },
+        {
+          "command": "zovoPyprojview.zovoTitle.auditPyproject",
+          "when": "false"
+        },
+        {
+          "command": "zovoPyprojview.zovoTitle.diffPyprojects",
+          "when": "false"
+        },
+        {
+          "command": "zovoPyprojview.zovoTitle.exportDepMatrix",
+          "when": "false"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "PyProject & Ruff Config View",
+      "properties": {
+        "zovoPyprojview.maxFileMB": {
+          "type": "number",
+          "default": 16,
+          "minimum": 1,
+          "maximum": 128,
+          "description": "Files up to this size open in PyProject & Ruff Config View."
+        },
+        "zovoPyprojview.pageSize": {
+          "type": "number",
+          "default": 100,
+          "minimum": 20,
+          "maximum": 500,
+          "description": "Config entries shown on one page."
+        },
+        "zovoPyprojview.showProTools": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show the Zovo Pro tools (pyproject audit, config diff and dependency matrix export) in the Command Palette, the Explorer menu, the editor title menu and the viewer toolbar. Everything free stays visible."
+        },
+        "zovoPyprojview.askForRating": {
+          "type": "boolean",
+          "default": true,
+          "description": "Ask once for a store rating after 3 pyproject.toml or ruff.toml files open without an error across 2 days. Choosing No thanks never asks again. Nothing is sent anywhere."
+        },
+        "zovoPyprojview.showSupportLinks": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show the small Rate, More free tools and Zovo Pro links at the bottom of the viewer. Nothing is sent anywhere."
+        },
+        "zovo.pyprojview.trial.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show the 7-day Zovo Pro trial button in the Pro panel."
+        }
+      }
+    },
+    "walkthroughs": [
+      {
+        "id": "zovoPyprojview.start",
+        "title": "Get started with PyProject & Ruff Config View",
+        "description": "Inspect pyproject.toml, ruff.toml and .ruff.toml files in VS Code offline.",
+        "steps": [
+          {
+            "id": "open",
+            "title": "Open a pyproject.toml or ruff.toml file",
+            "description": "Click any pyproject.toml, ruff.toml or .ruff.toml file in the Explorer, or run Open in PyProject & Ruff Config View.\n[Open the sample pyproject.toml file](command:zovoPyprojview.openSample)",
+            "media": {
+              "image": "images/screenshot.png",
+              "altText": "A pyproject.toml file open in the inspector showing dependencies, Ruff and Mypy tool config, build-system entrypoints and static findings."
+            },
+            "completionEvents": [
+              "onCommand:zovoPyprojview.openSample"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "scripts": {
+    "test": "node scripts/test.js",
+    "package": "npx -y @vscode/vsce@3 package --no-dependencies"
+  },
+  "sponsor": {
+    "url": "https://github.com/sponsors/theluckystrike/sponsorships?tier_id=679878"
+  }
+}
